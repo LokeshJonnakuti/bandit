@@ -6,14 +6,14 @@ something = ''
 Environment(loader=templateLoader, load=templateLoader, autoescape=True)
 templateEnv = jinja2.Environment(autoescape=True,
         loader=templateLoader )
-Environment(loader=templateLoader, load=templateLoader, autoescape=something)
-templateEnv = jinja2.Environment(autoescape=False, loader=templateLoader )
+Environment(loader=templateLoader, load=templateLoader, autoescape=True)
+templateEnv = jinja2.Environment(autoescape=True, loader=templateLoader )
 Environment(loader=templateLoader,
             load=templateLoader,
-            autoescape=False)
+            autoescape=True)
 
 Environment(loader=templateLoader,
-            load=templateLoader)
+            load=templateLoader, autoescape=True)
 
 Environment(loader=templateLoader, autoescape=select_autoescape())
 
@@ -26,4 +26,4 @@ Environment(loader=templateLoader,
 
 def fake_func():
     return 'foobar'
-Environment(loader=templateLoader, autoescape=fake_func())
+Environment(loader=templateLoader, autoescape=True)
