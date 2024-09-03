@@ -10,7 +10,7 @@ def yaml_load():
     # sample function with known yaml.load candidates
     temp_str = yaml.dump({'a': '1', 'b': '2'})
     # candidate #4
-    y = yaml.load(temp_str) # nosec
+    y = yaml.load(temp_str, Loader=yaml.SafeLoader) # nosec
 
 def xml_sax_make_parser():
     # sample function with known xml.sax.make_parser candidates
