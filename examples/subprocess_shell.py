@@ -1,5 +1,6 @@
 import subprocess
 from subprocess import Popen as pop
+from security import safe_command
 
 
 def Popen(*args, **kwargs):
@@ -33,11 +34,11 @@ subprocess.run(['/bin/ls', '-l'])
 subprocess.run('/bin/ls -l', shell=True)
 
 subprocess.Popen('/bin/ls *', shell=True)
-subprocess.Popen('/bin/ls %s' % ('something',), shell=True)
-subprocess.Popen('/bin/ls {}'.format('something'), shell=True)
+safe_command.run(subprocess.Popen, '/bin/ls %s' % ('something',), shell=True)
+safe_command.run(subprocess.Popen, '/bin/ls {}'.format('something'), shell=True)
 
 command = "/bin/ls" + unknown_function()
-subprocess.Popen(command, shell=True)
+safe_command.run(subprocess.Popen, command, shell=True)
 
 subprocess.Popen('/bin/ls && cat /etc/passwd', shell=True)
 
